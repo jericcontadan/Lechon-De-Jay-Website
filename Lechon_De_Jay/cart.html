@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart and Checkout | Lechon De Jay</title>
+  <meta name="description" content="Review your cart and place your order.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="cart">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header and footer are filled in by script.js so they are the same on every page -->
+  <header class="site-header" id="siteHeader"></header>
+
+  <main id="main" class="container">
+    <h1 class="page-title">Your Cart</h1>
+    <div id="cartContent"></div>
+    <div id="suggestBox" class="info-box" hidden></div>
+    <form class="form-box" id="checkoutForm" novalidate hidden>
+      <h2>Checkout</h2>
+      <fieldset>
+        <legend>Order type</legend>
+        <label class="check"><input type="radio" name="orderType" value="Takeout" checked> Takeout</label>
+        <label class="check"><input type="radio" name="orderType" value="Dine-in"> Dine-in</label>
+      </fieldset>
+      <div class="form-row">
+        <label>Pickup date <input type="date" name="date" required></label>
+        <label>Pickup time <select name="time" required></select></label>
+      </div>
+      <label>Notes (optional) <textarea name="notes" rows="2" maxlength="200"></textarea></label>
+      <fieldset>
+        <legend>Payment</legend>
+        <label class="check"><input type="radio" name="pay" value="GCash" checked> GCash (online)</label>
+        <label class="check"><input type="radio" name="pay" value="Maya"> Maya (online)</label>
+        <label class="check"><input type="radio" name="pay" value="Pay at pickup"> Pay at pickup (cash or e-wallet)</label>
+      </fieldset>
+      <p class="total-line">Total: <strong id="checkoutTotal"></strong></p>
+      <p class="privacy">Online payment is simulated for this school project. No real money or account is used.</p>
+      <button class="btn btn-primary" type="submit">Place Order</button>
+    </form>
+  </main>
+
+  <footer class="site-footer" id="siteFooter"></footer>
+  <div id="toastHost" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

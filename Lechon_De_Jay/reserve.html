@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve Lechon | Lechon De Jay</title>
+  <meta name="description" content="Reserve a whole lechon for your pickup date.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="reserve">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header and footer are filled in by script.js so they are the same on every page -->
+  <header class="site-header" id="siteHeader"></header>
+
+  <main id="main" class="container">
+    <h1 class="page-title">Reserve a Whole Lechon</h1>
+    <p id="reserveRules" class="note"></p>
+    <form class="form-box" id="reserveForm" novalidate>
+      <label>Lechon size <select name="size" required></select></label>
+      <div class="form-row">
+        <label>Pickup date <input type="date" name="date" required></label>
+        <label>Pickup time <select name="time" required></select></label>
+      </div>
+      <fieldset>
+        <legend>Add-ons (optional)</legend>
+        <div id="reserveAddons" class="check-grid"></div>
+      </fieldset>
+      <label>Notes (optional) <textarea name="notes" rows="2" maxlength="200"></textarea></label>
+      <fieldset>
+        <legend>Pay the deposit by</legend>
+        <label class="check"><input type="radio" name="pay" value="GCash" checked> GCash</label>
+        <label class="check"><input type="radio" name="pay" value="Maya"> Maya</label>
+      </fieldset>
+      <div class="summary" id="reserveSummary" aria-live="polite"></div>
+      <p class="privacy">Online payment is simulated for this school project. The balance is paid at pickup.</p>
+      <button class="btn btn-primary" type="submit">Pay Deposit and Reserve</button>
+    </form>
+  </main>
+
+  <footer class="site-footer" id="siteFooter"></footer>
+  <div id="toastHost" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

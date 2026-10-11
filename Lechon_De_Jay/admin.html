@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Lechon De Jay</title>
+  <meta name="description" content="Admin and staff area of Lechon De Jay.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="admin">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header and footer are filled in by script.js so they are the same on every page -->
+  <header class="site-header" id="siteHeader"></header>
+
+  <main id="main" class="container">
+    <h1 class="page-title">Admin Area</h1>
+    <div class="admin-layout">
+      <nav id="adminTabs" class="admin-tabs" aria-label="Admin sections"></nav>
+      <section id="adminPanel" class="admin-panel" tabindex="-1" aria-live="polite"></section>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="siteFooter"></footer>
+  <div id="toastHost" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lechon De Jay | Authentic Filipino Lechon in Bacoor, Cavite</title>
+  <meta name="description" content="Order lechon online, reserve a whole lechon, book your event and track your order. Lechon De Jay, Bacoor City, Cavite.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header and footer are filled in by script.js so they are the same on every page -->
+  <header class="site-header" id="siteHeader"></header>
+
+  <main id="main" class="container">
+    <section class="home-top" aria-labelledby="home-title">
+      <div class="hero photo" data-img="hero">
+        <span class="photo-label">Hero photo: whole lechon</span>
+        <div class="hero-card">
+          <h1 id="home-title">Authentic Filipino Lechon for Every Celebration</h1>
+          <p>Everyday meals and big feasts, served fresh in Bacoor City.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="menu.html">See Menu</a>
+          <a class="btn btn-outline" href="contact.html">Contact Us</a>
+        </div>
+      </div>
+      <aside class="home-side" aria-label="Store information">
+        <div class="hours-box"><strong>Open daily<br>10 AM to 10 PM<br>Dine-in and takeout</strong></div>
+        <a class="fb-box" href="https://www.facebook.com/share/1K9S4BzeRE/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook page<br>link and updates</a>
+      </aside>
+    </section>
+
+    <section aria-labelledby="serve-h">
+      <h2 class="section-title" id="serve-h">What we serve</h2>
+      <div class="serve-grid">
+        <a class="serve-card photo" data-img="whole" href="menu.html?cat=Whole%20Lechon"><span class="btn btn-primary">Whole Lechon</span></a>
+        <a class="serve-card photo" data-img="meals" href="menu.html?cat=Meals"><span class="btn btn-primary">Meals</span></a>
+        <a class="serve-card photo" data-img="snacks" href="menu.html?cat=Snacks%20%26%20Sides"><span class="btn btn-primary">Snacks &amp; Sides</span></a>
+      </div>
+    </section>
+
+    <section aria-labelledby="order-h">
+      <h2 class="section-title" id="order-h">How to order</h2>
+      <ol class="steps">
+        <li><span>1</span> Choose from the menu</li>
+        <li><span>2</span> Order, reserve or book online</li>
+        <li><span>3</span> Pay and track your order</li>
+      </ol>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="menu.html">Order Now</a>
+        <a class="btn btn-outline" href="reserve.html">Reserve a Whole Lechon</a>
+        <a class="btn btn-outline" href="event.html">Book an Event</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="reviews-h">
+      <h2 class="section-title" id="reviews-h">What customers say</h2>
+      <p id="ratingSummary" class="muted"></p>
+      <div id="homeReviews" class="reviews-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="siteFooter"></footer>
+  <div id="toastHost" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

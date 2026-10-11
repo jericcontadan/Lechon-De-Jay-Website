@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | Lechon De Jay</title>
+  <meta name="description" content="Track your orders, reservations and event bookings.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="orders">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header and footer are filled in by script.js so they are the same on every page -->
+  <header class="site-header" id="siteHeader"></header>
+
+  <main id="main" class="container">
+    <h1 class="page-title">My Orders</h1>
+    <section id="notices" class="info-box" hidden aria-label="Latest updates"></section>
+    <div class="tabs" id="recordFilter" role="group" aria-label="Filter records"></div>
+    <div id="recordList"></div>
+  </main>
+
+  <footer class="site-footer" id="siteFooter"></footer>
+  <div id="toastHost" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

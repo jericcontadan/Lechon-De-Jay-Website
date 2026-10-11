@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | Lechon De Jay</title>
+  <meta name="description" content="Whole lechon, meals, snacks and sides, desserts and drinks with prices.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="menu">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header and footer are filled in by script.js so they are the same on every page -->
+  <header class="site-header" id="siteHeader"></header>
+
+  <main id="main" class="container">
+    <h1 class="page-title">Our Menu</h1>
+    <p id="menuRating" class="muted"></p>
+    <div class="tabs" id="menuTabs" role="group" aria-label="Menu categories"></div>
+    <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+    <section aria-labelledby="addon-h" class="addons">
+      <h2 id="addon-h" class="section-title">Add-ons</h2>
+      <ul class="addon-list" id="addonList"></ul>
+    </section>
+    <p class="note">Payment is by cash and e-wallet only. Whole lechon is reserved ahead on the Reserve page. Prices follow the store's current price list.</p>
+  </main>
+
+  <footer class="site-footer" id="siteFooter"></footer>
+  <div id="toastHost" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
