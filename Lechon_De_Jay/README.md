@@ -4,7 +4,7 @@ Website and ordering system for **Lechon De Jay**, a Filipino lechon store in Ca
 
 Web Development Project (BSIS 3C-M), Phase 1. Built with **HTML, CSS and JavaScript only**.
 
-**Live site:** https://YOUR-USERNAME.github.io/YOUR-REPO-NAME
+**Live site:** https://jericcontadan.github.io/Lechon-De-Jay-Website
 
 ## Team
 

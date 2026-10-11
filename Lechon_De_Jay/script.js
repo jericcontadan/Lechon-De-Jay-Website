@@ -32,15 +32,20 @@ const EVENT_FLOW = ['Pending', 'Confirmed', 'Completed'];
 const CLOSED = ['Cancelled', 'Declined'];
 const KIND_LABEL = { order: 'Order', reservation: 'Lechon reservation', event: 'Event booking' };
 
-// Put image file names from the assets folder here, for example 'assets/banner.jpg'
-const IMAGES = { hero: '', whole: '', meals: '', snacks: '' };
+// Put these image files in the assets folder, or update the paths to match your filenames.
+const IMAGES = {
+  hero: 'assets/home-banner.jpg',
+  whole: 'assets/home-whole-lechon.jpg',
+  meals: 'assets/home-meals.jpg',
+  snacks: 'assets/home-snacks.jpg'
+};
 const GALLERY = [
-  { src: '', alt: 'Whole roasted lechon with golden crispy skin', caption: 'Our whole lechon' },
-  { src: '', alt: 'Plated lechon meal with rice', caption: 'Lechon meal' },
-  { src: '', alt: 'Curly fries platter with cheese sauce', caption: 'Curly fries platter' },
-  { src: '', alt: 'Front of the Lechon De Jay store', caption: 'Our store in Bacoor' },
-  { src: '', alt: 'Staff serving customers at the counter', caption: 'Ready to serve you' },
-  { src: '', alt: 'A celebration table with lechon', caption: 'Feasts and celebrations' }
+  { src: 'assets/gallery-whole-lechon.jpg', alt: 'Whole roasted lechon with golden crispy skin', caption: 'Our whole lechon' },
+  { src: 'assets/gallery-lechon-meal.jpg', alt: 'Plated lechon meal with rice', caption: 'Lechon meal' },
+  { src: 'assets/gallery-curly-fries.jpg', alt: 'Curly fries platter with cheese sauce', caption: 'Curly fries platter' },
+  { src: 'assets/gallery-store.jpg', alt: 'Front of the Lechon De Jay store', caption: 'Our store in Bacoor' },
+  { src: 'assets/gallery-staff.jpg', alt: 'Staff serving customers at the counter', caption: 'Ready to serve you' },
+  { src: 'assets/gallery-celebration.jpg', alt: 'A celebration table with lechon', caption: 'Feasts and celebrations' }
 ];
 
 const DEFAULT_SETTINGS = {
@@ -86,7 +91,31 @@ const SEED_MENU = [
 ];
 
 // Optional photos for menu items: item id and file in assets, for example 'm-budget': 'assets/budget-meal.jpg'
-const MENU_IMAGES = {};
+const MENU_IMAGES = {
+  'wl-deleche': 'assets/lechon-deleche.jpg',
+  'wl-regular': 'assets/lechon-regular.jpg',
+  'wl-medium1': 'assets/lechon-medium1.jpg',
+  'wl-medium2': 'assets/lechon-medium2.jpg',
+  'wl-large': 'assets/lechon-large.jpg',
+  'wl-xl': 'assets/lechon-xl.jpg',
+  'wl-xxl': 'assets/lechon-xxl.jpg',
+  'wl-jumbo': 'assets/lechon-jumbo.jpg',
+  'wl-superjumbo': 'assets/lechon-superjumbo.jpg',
+  'wl-oversized': 'assets/lechon-oversized.jpg',
+  'wl-gigantic': 'assets/lechon-gigantic.jpg',
+  'wl-titan': 'assets/lechon-titan.jpg',
+  'wl-baka': 'assets/lechon-baka.jpg',
+  'm-budget': 'assets/budget-meal.jpg',
+  'm-paksiw': 'assets/lechon-paksiw.jpg',
+  'm-unli': 'assets/unli-rice-meal.jpg',
+  'm-crew150': 'assets/crew-meal-150.jpg',
+  'm-crew180': 'assets/crew-meal-180.jpg',
+  'm-crew200': 'assets/crew-meal-200.jpg',
+  's-curly': 'assets/curly-fries.jpg',
+  's-nachos': 'assets/loaded-nachos.jpg',
+  'd-salad': 'assets/fruit-salad.jpg',
+  'd-refresh': 'assets/refreshments.jpg'
+};
 
 /* ===== 2. HELPERS ===== */
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -458,12 +487,19 @@ function renderMenuGrid() {
     else if (!item.available) action = h('button', { type: 'button', class: 'btn btn-outline btn-sm', disabled: true }, 'Sold out');
     else if (item.cat === 'Whole Lechon') action = h('a', { class: 'btn btn-primary btn-sm', href: 'reserve.html?size=' + encodeURIComponent(item.id) }, 'Reserve');
     else action = h('button', { type: 'button', class: 'btn btn-primary btn-sm', onClick: () => addToCart(item.id) }, 'Add to cart');
-    const card = h('article', { class: 'menu-card photo' },
-      item.soon ? h('span', { class: 'badge' }, 'Coming soon') : null,
+    const photo = item.img || MENU_IMAGES[item.id];
+    const image = h('div', { class: 'menu-image' });
+    if (photo) image.append(h('img', { class: 'menu-photo', src: photo, alt: item.name, loading: 'lazy' }));
+    else {
+      image.classList.add('photo');
+      image.setAttribute('role', 'img');
+      image.setAttribute('aria-label', 'Photo placeholder: ' + item.name);
+    }
+    if (item.soon) image.append(h('span', { class: 'badge' }, 'Coming soon'));
+    const card = h('article', { class: 'menu-card' },
+      image,
       h('div', { class: 'info' }, h('div', { class: 'name' }, item.name), h('div', { class: 'desc' }, item.desc),
         h('div', { class: 'price' }, item.soon ? 'Coming soon' : peso(item.price)), action));
-    const photo = item.img || MENU_IMAGES[item.id];
-    if (photo) { card.style.backgroundImage = `url("${photo}")`; card.classList.add('has-img'); }
     return card;
   }));
 }
