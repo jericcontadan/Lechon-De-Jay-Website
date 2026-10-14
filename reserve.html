@@ -13,21 +13,25 @@
 <body data-page="reserve">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header and footer are filled in by script.js so they are the same on every page -->
-  <header class="site-header" id="siteHeader"></header>
+  <header class="site-header"><div class="header-inner">
+    <a class="logo" href="index.html">Lechon De Jay</a><input class="nav-check" type="checkbox" id="nav-reserve" aria-label="Toggle navigation"><label class="nav-toggle" for="nav-reserve">☰ Menu</label>
+    <div class="header-menu"><nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="menu.html">Menu</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><a class="active" href="reserve.html" aria-current="page">Reserve</a><a href="event.html">Event Booking</a><a href="login.html">Login</a><a href="register.html">Register</a><a href="cart.html">Cart</a><a href="orders.html">Orders</a><a href="profile.html">Profile</a><a href="admin.html">Admin</a></nav></div>
+  </div></header>
 
   <main id="main" class="container">
     <h1 class="page-title">Reserve a Whole Lechon</h1>
-    <p id="reserveRules" class="note"></p>
-    <form class="form-box" id="reserveForm" novalidate>
-      <label>Lechon size <select name="size" required></select></label>
+    <p class="note">Reservations require at least two days' notice. Availability is confirmed by the store.</p>
+    <form class="form-box" action="#" method="post">
+      <label>Lechon size <select name="size" required>
+        <option value="">Choose a size</option><option>De Leche — ₱11,000</option><option>Regular — ₱12,000</option><option>Medium 1 — ₱12,500</option><option>Medium 2 — ₱13,000</option><option>Large — ₱14,000</option><option>X-Large — ₱15,000</option><option>XX-Large — ₱16,000</option><option>Jumbo — ₱17,000</option><option>Super Jumbo — ₱18,000</option><option>Oversized — ₱19,000</option><option>Gigantic — ₱21,000</option><option>Titan — ₱23,000</option>
+      </select></label>
       <div class="form-row">
         <label>Pickup date <input type="date" name="date" required></label>
-        <label>Pickup time <select name="time" required></select></label>
+        <label>Pickup time <select name="time" required><option value="">Choose a time</option><option>10:00 AM</option><option>12:00 PM</option><option>2:00 PM</option><option>4:00 PM</option><option>6:00 PM</option><option>8:00 PM</option><option>10:00 PM</option></select></label>
       </div>
       <fieldset>
         <legend>Add-ons (optional)</legend>
-        <div id="reserveAddons" class="check-grid"></div>
+        <div class="check-grid"><label class="check"><input type="checkbox" name="addon" value="Lechon Bites">Lechon Bites — ₱30</label><label class="check"><input type="checkbox" name="addon" value="Cheese Sauce">Cheese Sauce — ₱50</label><label class="check"><input type="checkbox" name="addon" value="Refreshments">Refreshments — ₱79</label></div>
       </fieldset>
       <label>Notes (optional) <textarea name="notes" rows="2" maxlength="200"></textarea></label>
       <fieldset>
@@ -35,14 +39,11 @@
         <label class="check"><input type="radio" name="pay" value="GCash" checked> GCash</label>
         <label class="check"><input type="radio" name="pay" value="Maya"> Maya</label>
       </fieldset>
-      <div class="summary" id="reserveSummary" aria-live="polite"></div>
-      <p class="privacy">Online payment is simulated for this school project. The balance is paid at pickup.</p>
-      <button class="btn btn-primary" type="submit">Pay Deposit and Reserve</button>
+      <p class="privacy">This form is a prototype; reservation processing and payment are planned for Phase 2.</p>
+      <button class="btn btn-primary" type="submit">Submit Reservation Request</button>
     </form>
   </main>
 
-  <footer class="site-footer" id="siteFooter"></footer>
-  <div id="toastHost" aria-live="polite"></div>
-  <script src="script.js"></script>
+  <footer class="site-footer"><address>Casimiro Westville, Ligas 2, Bacoor City, Cavite · Open daily 10 AM to 10 PM</address><p>© 2026 Lechon De Jay</p></footer>
 </body>
 </html>

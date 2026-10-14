@@ -13,23 +13,77 @@
 <body data-page="menu">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header and footer are filled in by script.js so they are the same on every page -->
-  <header class="site-header" id="siteHeader"></header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Lechon De Jay</a>
+      <input class="nav-check" type="checkbox" id="nav-menu" aria-label="Toggle navigation">
+      <label class="nav-toggle" for="nav-menu">☰ Menu</label>
+      <div class="header-menu"><nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a><a href="about.html">About</a><a class="active" href="menu.html" aria-current="page">Menu</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><a href="reserve.html">Reserve</a><a href="event.html">Event Booking</a><a href="login.html">Login</a><a href="register.html">Register</a><a href="cart.html">Cart</a><a href="orders.html">Orders</a><a href="profile.html">Profile</a><a href="admin.html">Admin</a>
+      </nav></div>
+    </div>
+  </header>
 
   <main id="main" class="container">
     <h1 class="page-title">Our Menu</h1>
-    <p id="menuRating" class="muted"></p>
-    <div class="tabs" id="menuTabs" role="group" aria-label="Menu categories"></div>
-    <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
-    <section aria-labelledby="addon-h" class="addons">
-      <h2 id="addon-h" class="section-title">Add-ons</h2>
-      <ul class="addon-list" id="addonList"></ul>
+    <p class="note">Menu items and prices are shown below. Ordering is planned for Phase 2.</p>
+    <section aria-labelledby="whole-h">
+      <h2 id="whole-h" class="section-title">Whole Lechon</h2>
+      <div class="menu-grid">
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-deleche.jpg" alt="Lechon Baboy: De Leche" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: De Leche</h3><p class="desc">5 to 6 kg, serves 15 to 20</p><p class="price">₱11,000</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-regular.jpg" alt="Lechon Baboy: Regular" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: Regular</h3><p class="desc">7 to 8 kg, serves 25 to 30</p><p class="price">₱12,000</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-medium1.jpg" alt="Lechon Baboy: Medium 1" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: Medium 1</h3><p class="desc">9 to 10 kg, serves 30 to 35</p><p class="price">₱12,500</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-medium2.jpg" alt="Lechon Baboy: Medium 2" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: Medium 2</h3><p class="desc">11 to 12 kg, serves 35 to 40</p><p class="price">₱13,000</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-large.jpg" alt="Lechon Baboy: Large" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: Large</h3><p class="desc">13 to 15 kg, serves 45 to 50</p><p class="price">₱14,000</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-xl.jpg" alt="Lechon Baboy: X-Large" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: X-Large</h3><p class="desc">16 to 18 kg, serves 55 to 60</p><p class="price">₱15,000</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-xxl.jpg" alt="Lechon Baboy: XX-Large" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: XX-Large</h3><p class="desc">19 to 20 kg, serves 60 to 65</p><p class="price">₱16,000</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-jumbo.jpg" alt="Lechon Baboy: Jumbo" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: Jumbo</h3><p class="desc">21 to 23 kg, serves 65 to 70</p><p class="price">₱17,000</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-superjumbo.jpg" alt="Lechon Baboy: Super Jumbo" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: Super Jumbo</h3><p class="desc">24 to 25 kg, serves 75 to 80</p><p class="price">₱18,000</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-oversized.jpg" alt="Lechon Baboy: Oversized" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: Oversized</h3><p class="desc">26 to 28 kg, serves 85 to 90</p><p class="price">₱19,000</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-gigantic.jpg" alt="Lechon Baboy: Gigantic" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: Gigantic</h3><p class="desc">29 to 31 kg, serves 100 to 110</p><p class="price">₱21,000</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-titan.jpg" alt="Lechon Baboy: Titan" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baboy: Titan</h3><p class="desc">32 to 35 kg, serves 110 to 130</p><p class="price">₱23,000</p><a class="btn btn-primary btn-sm" href="reserve.html">Reserve</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-baka.jpg" alt="Lechon Baka" loading="lazy"></div><div class="info"><h3 class="name">Lechon Baka</h3><p class="desc">Whole beef lechon</p><p class="price">₱0 · Coming soon</p><span class="btn btn-outline btn-sm">Coming soon</span></div></article>
+      </div>
     </section>
-    <p class="note">Payment is by cash and e-wallet only. Whole lechon is reserved ahead on the Reserve page. Prices follow the store's current price list.</p>
+    <section aria-labelledby="meals-h">
+      <h2 id="meals-h" class="section-title">Meals</h2>
+      <div class="menu-grid">
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/budget-meal.jpg" alt="Lechon De Jay budget meal" loading="lazy"></div><div class="info"><h3 class="name">₱99 Budget Meal</h3><p class="desc">Lechon de Jay budget meal with rice</p><p class="price">₱99</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-paksiw.jpg" alt="Lechon paksiw" loading="lazy"></div><div class="info"><h3 class="name">Lechon Paksiw</h3><p class="desc">Tender lechon slow-cooked in a savory paksiw sauce</p><p class="price">₱149</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/unli-rice-meal.jpg" alt="Lechon meal with unlimited rice" loading="lazy"></div><div class="info"><h3 class="name">Lechon Meal with Unli Rice</h3><p class="desc">Lechon meal, eat all the rice you want</p><p class="price">₱129</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/crew-meal-150.jpg" alt="Crew meal with rice and lechon" loading="lazy"></div><div class="info"><h3 class="name">Crew Meal: Rice + Lechon</h3><p class="desc">Fuel your team, keep them happy</p><p class="price">₱150</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/crew-meal-180.jpg" alt="Crew meal with rice, lechon and vegetable" loading="lazy"></div><div class="info"><h3 class="name">Crew Meal: Rice + Lechon + Vegetable</h3><p class="desc">Fuel your team, keep them happy</p><p class="price">₱180</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/crew-meal-200.jpg" alt="Crew meal with rice, lechon, vegetable and dessert" loading="lazy"></div><div class="info"><h3 class="name">Crew Meal: Rice + Lechon + Vegetable + Dessert</h3><p class="desc">Fuel your team, keep them happy</p><p class="price">₱200</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+      </div>
+    </section>
+    <section aria-labelledby="snacks-h">
+      <h2 id="snacks-h" class="section-title">Snacks &amp; Sides</h2>
+      <div class="menu-grid">
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/curly-fries.jpg" alt="Curly fries platter with potato chips and creamy dip" loading="lazy"></div><div class="info"><h3 class="name">Curly Fries Platter</h3><p class="desc">Classic fries, curly fries and crinkle-cut potato chips with a creamy dip</p><p class="price">₱249</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/loaded-nachos.jpg" alt="Loaded nachos" loading="lazy"></div><div class="info"><h3 class="name">Crazy Loaded Nachos</h3><p class="desc">Cheesy, loaded and crazy good</p><p class="price">₱179</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+      </div>
+    </section>
+    <section aria-labelledby="desserts-h">
+      <h2 id="desserts-h" class="section-title">Desserts &amp; Drinks</h2>
+      <div class="menu-grid">
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/fruit-salad.jpg" alt="Fruit salad" loading="lazy"></div><div class="info"><h3 class="name">Fruit Salad</h3><p class="desc">Creamy, fruity and perfectly refreshing</p><p class="price">₱79</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/refreshments.jpg" alt="Tokyo Red iced tea and fresh cucumber juice" loading="lazy"></div><div class="info"><h3 class="name">Refreshments</h3><p class="desc">Tokyo Red iced tea or fresh cucumber juice</p><p class="price">₱79</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+      </div>
+    </section>
+    <section aria-labelledby="addon-h">
+      <h2 id="addon-h" class="section-title">Add-ons</h2>
+      <div class="menu-grid">
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/lechon-bites.jpg" alt="Lechon bites" loading="lazy"></div><div class="info"><h3 class="name">Lechon Bites</h3><p class="desc">Creamy, melty and extra delicious. Add to your meal</p><p class="price">₱30</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/cheese-sauce.jpg" alt="Cheese sauce" loading="lazy"></div><div class="info"><h3 class="name">Cheese Sauce</h3><p class="desc">Add to your Curly Fries Platter</p><p class="price">₱50</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+        <article class="menu-card"><div class="menu-image"><img class="menu-photo" src="assets/refreshments.jpg" alt="Tokyo Red iced tea and cucumber juice" loading="lazy"></div><div class="info"><h3 class="name">Refreshments</h3><p class="desc">Add to your lechon meal</p><p class="price">₱79</p><a class="btn btn-primary btn-sm" href="cart.html">Add to cart</a></div></article>
+      </div>
+    </section>
+    <p class="note">Payment is by cash and e-wallet only. Whole lechon is reserved ahead on the Reserve page. Prices follow the store's current price list. Ordering is planned for Phase 2.</p>
   </main>
 
-  <footer class="site-footer" id="siteFooter"></footer>
-  <div id="toastHost" aria-live="polite"></div>
-  <script src="script.js"></script>
+  <footer class="site-footer">
+    <address>Casimiro Westville, Ligas 2, Bacoor City, Cavite · Open daily 10 AM to 10 PM</address>
+    <p>© 2026 Lechon De Jay</p>
+  </footer>
 </body>
 </html>

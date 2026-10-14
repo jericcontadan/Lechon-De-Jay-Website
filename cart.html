@@ -13,14 +13,16 @@
 <body data-page="cart">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header and footer are filled in by script.js so they are the same on every page -->
-  <header class="site-header" id="siteHeader"></header>
+  <header class="site-header"><div class="header-inner">
+    <a class="logo" href="index.html">Lechon De Jay</a><input class="nav-check" type="checkbox" id="nav-cart" aria-label="Toggle navigation"><label class="nav-toggle" for="nav-cart">☰ Menu</label>
+    <div class="header-menu"><nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="menu.html">Menu</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><a href="reserve.html">Reserve</a><a href="event.html">Event Booking</a><a href="login.html">Login</a><a href="register.html">Register</a><a class="active" href="cart.html" aria-current="page">Cart</a><a href="orders.html">Orders</a><a href="profile.html">Profile</a><a href="admin.html">Admin</a></nav></div>
+  </div></header>
 
   <main id="main" class="container">
     <h1 class="page-title">Your Cart</h1>
-    <div id="cartContent"></div>
-    <div id="suggestBox" class="info-box" hidden></div>
-    <form class="form-box" id="checkoutForm" novalidate hidden>
+    <p class="note">Prototype page. Ordering is planned for Phase 2.</p>
+    <div class="table-wrap"><table class="data"><thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Subtotal</th></tr></thead><tbody><tr><td>₱99 Budget Meal</td><td>2</td><td>₱99</td><td>₱198</td></tr><tr><td>Lechon Paksiw</td><td>1</td><td>₱149</td><td>₱149</td></tr></tbody><tfoot><tr><th colspan="3">Sample total</th><th>₱347</th></tr></tfoot></table></div>
+    <form class="form-box" action="#" method="post">
       <h2>Checkout</h2>
       <fieldset>
         <legend>Order type</legend>
@@ -29,7 +31,7 @@
       </fieldset>
       <div class="form-row">
         <label>Pickup date <input type="date" name="date" required></label>
-        <label>Pickup time <select name="time" required></select></label>
+        <label>Pickup time <select name="time" required><option value="">Choose a time</option><option>10:00 AM</option><option>12:00 PM</option><option>2:00 PM</option><option>4:00 PM</option><option>6:00 PM</option><option>8:00 PM</option></select></label>
       </div>
       <label>Notes (optional) <textarea name="notes" rows="2" maxlength="200"></textarea></label>
       <fieldset>
@@ -38,14 +40,12 @@
         <label class="check"><input type="radio" name="pay" value="Maya"> Maya (online)</label>
         <label class="check"><input type="radio" name="pay" value="Pay at pickup"> Pay at pickup (cash or e-wallet)</label>
       </fieldset>
-      <p class="total-line">Total: <strong id="checkoutTotal"></strong></p>
-      <p class="privacy">Online payment is simulated for this school project. No real money or account is used.</p>
+      <p class="total-line">Sample total: <strong>₱347</strong></p>
+      <p class="privacy">Prototype page. Checkout and payment are planned for Phase 2.</p>
       <button class="btn btn-primary" type="submit">Place Order</button>
     </form>
   </main>
 
-  <footer class="site-footer" id="siteFooter"></footer>
-  <div id="toastHost" aria-live="polite"></div>
-  <script src="script.js"></script>
+  <footer class="site-footer"><address>Casimiro Westville, Ligas 2, Bacoor City, Cavite · Open daily 10 AM to 10 PM</address><p>© 2026 Lechon De Jay</p></footer>
 </body>
 </html>

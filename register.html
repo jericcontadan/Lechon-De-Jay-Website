@@ -13,28 +13,28 @@
 <body data-page="register">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header and footer are filled in by script.js so they are the same on every page -->
-  <header class="site-header" id="siteHeader"></header>
+  <header class="site-header"><div class="header-inner">
+    <a class="logo" href="index.html">Lechon De Jay</a><input class="nav-check" type="checkbox" id="nav-register" aria-label="Toggle navigation"><label class="nav-toggle" for="nav-register">☰ Menu</label>
+    <div class="header-menu"><nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="menu.html">Menu</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><a href="reserve.html">Reserve</a><a href="event.html">Event Booking</a><a href="login.html">Login</a><a class="active" href="register.html" aria-current="page">Register</a><a href="cart.html">Cart</a><a href="orders.html">Orders</a><a href="profile.html">Profile</a><a href="admin.html">Admin</a></nav></div>
+  </div></header>
 
   <main id="main" class="container">
     <div class="auth-box">
       <h1 class="page-title">Create Account</h1>
-      <form class="form-box" id="registerForm" novalidate>
+      <form class="form-box" action="#" method="post">
         <label>Full name <input name="name" type="text" autocomplete="name" required></label>
         <label>Mobile number <input name="mobile" type="tel" autocomplete="tel" placeholder="09XXXXXXXXX" required></label>
         <label>Email <input name="email" type="email" autocomplete="email" required></label>
         <label>Password (8 or more characters, with a letter and a number) <input name="password" type="password" autocomplete="new-password" required></label>
         <label>Confirm password <input name="confirm" type="password" autocomplete="new-password" required></label>
-        <label class="check"><input name="consent" type="checkbox"> I agree that Lechon De Jay may keep my name, mobile number and email to process my orders (Data Privacy Act of 2012, RA 10173).</label>
+        <label class="check"><input name="consent" type="checkbox" required> I agree that Lechon De Jay may keep my name, mobile number and email to process my orders (Data Privacy Act of 2012, RA 10173).</label>
         <button class="btn btn-primary" type="submit">Create Account</button>
-        <p class="form-status" id="registerStatus" role="status"></p>
+        <p class="note">Prototype page. Account creation is planned for Phase 2.</p>
       </form>
       <p>Already have an account? <a href="login.html">Log in</a></p>
     </div>
   </main>
 
-  <footer class="site-footer" id="siteFooter"></footer>
-  <div id="toastHost" aria-live="polite"></div>
-  <script src="script.js"></script>
+  <footer class="site-footer"><address>Casimiro Westville, Ligas 2, Bacoor City, Cavite · Open daily 10 AM to 10 PM</address><p>© 2026 Lechon De Jay</p></footer>
 </body>
 </html>

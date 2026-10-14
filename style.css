@@ -62,6 +62,8 @@ code { background: #fff; padding: 1px 6px; border-radius: 4px; border: 1px solid
 .nav-actions { padding-left: var(--s1); border-left: 1px solid #6a4a3c; }
 .count-badge { background: var(--gold); color: var(--brown); border-radius: 999px; padding: 0 8px; margin-left: 6px; font-size: .8rem; font-weight: 700; }
 .nav-toggle { display: none; background: var(--gold); color: var(--brown); border: 0; border-radius: var(--radius); padding: var(--s1) var(--s2); font: 600 1rem "Open Sans", sans-serif; min-height: 44px; cursor: pointer; }
+.nav-check { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.nav-check:focus-visible + .nav-toggle { outline: 3px solid var(--gold); outline-offset: 2px; }
 
 /* ===== 4. Buttons ===== */
 .btn {
@@ -103,7 +105,8 @@ code { background: #fff; padding: 1px 6px; border-radius: 4px; border: 1px solid
 .fb-box:hover { background: var(--white); }
 .serve-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); }
 .serve-card-link { display: flex; flex-direction: column; gap: var(--s1); text-align: center; text-decoration: none; }
-.serve-card { height: 180px; width: 100%; }
+.serve-card { height: 180px; width: 100%; overflow: hidden; }
+.serve-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .serve-card-link .btn { width: 100%; }
 .steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); }
 .steps li { background: var(--gold); border-radius: 12px; padding: 12px var(--s2); text-align: center; font-weight: 700; color: var(--brown); }
@@ -119,6 +122,7 @@ code { background: #fff; padding: 1px 6px; border-radius: 4px; border: 1px solid
 .gallery-grid figure { min-width: 0; margin: 0; overflow: hidden; background: #fff; border: 1px solid rgba(67, 35, 22, .14); border-radius: 12px; box-shadow: 0 4px 14px rgba(67, 35, 22, .1); transition: transform .2s ease, box-shadow .2s ease; }
 .gallery-grid figure:hover { transform: translateY(-3px); box-shadow: 0 9px 22px rgba(67, 35, 22, .17); }
 .gallery-grid .photo { position: relative; height: auto; aspect-ratio: 4 / 3; width: 100%; display: block; padding: 0; overflow: hidden; border: 0; border-radius: 0; font: inherit; cursor: default; }
+.gallery-grid .photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .gallery-grid button.photo { cursor: zoom-in; }
 .gallery-grid button.photo:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
 .gallery-grid .photo img { transition: transform .3s ease; }
@@ -256,7 +260,7 @@ ol.progress li.current { background: var(--gold); border-color: var(--brown); co
 @media (max-width: 1000px) {
   .nav-toggle { display: inline-block; }
   .header-menu { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; }
-  .header-menu.open { display: flex; }
+  .nav-check:checked ~ .header-menu { display: flex; }
   .site-nav, .nav-actions { flex-direction: column; align-items: stretch; border: 0; padding: 0; }
   .site-nav a, .nav-actions a, .nav-actions button.linklike { border-bottom: 0; border-left: 4px solid transparent; }
   .site-nav a:hover, .site-nav a.active, .nav-actions a:hover { border-left-color: var(--gold); }

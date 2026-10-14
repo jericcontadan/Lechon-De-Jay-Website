@@ -13,16 +13,50 @@
 <body data-page="gallery">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header and footer are filled in by script.js so they are the same on every page -->
-  <header class="site-header" id="siteHeader"></header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Lechon De Jay</a>
+      <input class="nav-check" type="checkbox" id="nav-gallery" aria-label="Toggle navigation">
+      <label class="nav-toggle" for="nav-gallery">☰ Menu</label>
+      <div class="header-menu"><nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="menu.html">Menu</a><a class="active" href="gallery.html" aria-current="page">Gallery</a><a href="contact.html">Contact</a><a href="reserve.html">Reserve</a><a href="event.html">Event Booking</a><a href="login.html">Login</a><a href="register.html">Register</a><a href="cart.html">Cart</a><a href="orders.html">Orders</a><a href="profile.html">Profile</a><a href="admin.html">Admin</a>
+      </nav></div>
+    </div>
+  </header>
 
   <main id="main" class="container">
     <h1 class="page-title">Gallery</h1>
-    <div class="gallery-grid" id="galleryGrid"></div>
+    <div class="gallery-grid">
+      <figure>
+        <div class="photo has-img"><img src="assets/gallery-whole-lechon.jpg" alt="Whole roasted lechon with golden crispy skin" loading="lazy"></div>
+        <figcaption>Our whole lechon</figcaption>
+      </figure>
+      <figure>
+        <div class="photo has-img"><img src="assets/gallery-lechon-meal.jpg" alt="Plated lechon meal with rice" loading="lazy"></div>
+        <figcaption>Lechon meal</figcaption>
+      </figure>
+      <figure>
+        <div class="photo has-img"><img src="assets/gallery-curly-fries.jpg" alt="Curly fries platter with cheese sauce" loading="lazy"></div>
+        <figcaption>Curly fries platter</figcaption>
+      </figure>
+      <figure>
+        <div class="photo has-img"><img src="assets/gallery-store.jpg" alt="Front of the Lechon De Jay store" loading="lazy"></div>
+        <figcaption>Our store in Bacoor</figcaption>
+      </figure>
+      <figure>
+        <div class="photo has-img"><img src="assets/gallery-staff.jpg" alt="Staff serving customers at the counter" loading="lazy"></div>
+        <figcaption>Ready to serve you</figcaption>
+      </figure>
+      <figure>
+        <div class="photo has-img"><img src="assets/gallery-celebration.jpg" alt="A celebration table with lechon" loading="lazy"></div>
+        <figcaption>Feasts and celebrations</figcaption>
+      </figure>
+    </div>
   </main>
 
-  <footer class="site-footer" id="siteFooter"></footer>
-  <div id="toastHost" aria-live="polite"></div>
-  <script src="script.js"></script>
+  <footer class="site-footer">
+    <address>Casimiro Westville, Ligas 2, Bacoor City, Cavite · Open daily 10 AM to 10 PM</address>
+    <p>© 2026 Lechon De Jay</p>
+  </footer>
 </body>
 </html>

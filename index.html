@@ -13,12 +13,22 @@
 <body data-page="home">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header and footer are filled in by script.js so they are the same on every page -->
-  <header class="site-header" id="siteHeader"></header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Lechon De Jay</a>
+      <input class="nav-check" type="checkbox" id="nav-home" aria-label="Toggle navigation">
+      <label class="nav-toggle" for="nav-home">☰ Menu</label>
+      <div class="header-menu">
+        <nav class="site-nav" aria-label="Main navigation">
+          <a class="active" href="index.html" aria-current="page">Home</a><a href="about.html">About</a><a href="menu.html">Menu</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><a href="reserve.html">Reserve</a><a href="event.html">Event Booking</a><a href="login.html">Login</a><a href="register.html">Register</a><a href="cart.html">Cart</a><a href="orders.html">Orders</a><a href="profile.html">Profile</a><a href="admin.html">Admin</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
   <main id="main" class="container">
     <section class="home-top" aria-labelledby="home-title">
-      <div class="hero photo" data-img="hero">
+      <div class="hero photo">
         <span class="photo-label">Hero photo: whole lechon</span>
         <div class="hero-card">
           <h1 id="home-title">Authentic Filipino Lechon for Every Celebration</h1>
@@ -42,15 +52,15 @@
       <h2 class="section-title" id="serve-h">What we serve</h2>
       <div class="serve-grid">
         <a class="serve-card-link" href="menu.html?cat=Whole%20Lechon">
-          <div class="serve-card photo" data-img="whole" role="img" aria-label="Whole Lechon"></div>
+          <div class="serve-card photo"><img src="assets/home-whole-lechon.jpg" alt="Whole roasted lechon" loading="lazy"></div>
           <span class="btn btn-primary">Whole Lechon</span>
         </a>
         <a class="serve-card-link" href="menu.html?cat=Meals">
-          <div class="serve-card photo" data-img="meals" role="img" aria-label="Meals"></div>
+          <div class="serve-card photo"><img src="assets/home-meals.jpg" alt="Lechon meal with rice" loading="lazy"></div>
           <span class="btn btn-primary">Meals</span>
         </a>
         <a class="serve-card-link" href="menu.html?cat=Snacks%20%26%20Sides">
-          <div class="serve-card photo" data-img="snacks" role="img" aria-label="Snacks and sides"></div>
+          <div class="serve-card photo"><img src="assets/home-snacks.jpg" alt="Snacks and sides platter" loading="lazy"></div>
           <span class="btn btn-primary">Snacks &amp; Sides</span>
         </a>
       </div>
@@ -71,14 +81,15 @@
     </section>
 
     <section aria-labelledby="reviews-h">
-      <h2 class="section-title" id="reviews-h">What customers say</h2>
-      <p id="ratingSummary" class="muted"></p>
-      <div id="homeReviews" class="reviews-grid"></div>
+      <h2 class="section-title" id="reviews-h">Visit Us</h2>
+      <p class="muted">Find us at Casimiro Westville, Ligas 2, Bacoor City, Cavite. Open daily from 10 AM to 10 PM.</p>
+      <div class="cta-row"><a class="btn btn-primary" href="contact.html">Get in touch</a><a class="btn btn-outline" href="gallery.html">View our gallery</a></div>
     </section>
   </main>
 
-  <footer class="site-footer" id="siteFooter"></footer>
-  <div id="toastHost" aria-live="polite"></div>
-  <script src="script.js"></script>
+  <footer class="site-footer">
+    <address>Casimiro Westville, Ligas 2, Bacoor City, Cavite · Open daily 10 AM to 10 PM</address>
+    <p>© 2026 Lechon De Jay</p>
+  </footer>
 </body>
 </html>
