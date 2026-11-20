@@ -576,3 +576,27 @@ document.addEventListener("DOMContentLoaded", () => {
 	updateStoreStatus();
 	window.setInterval(updateStoreStatus, 60 * 1000);
 });
+
+/* ===== 5. Optional logo and favicon ===== */
+document.addEventListener("DOMContentLoaded", () => {
+	const logoImage = new Image();
+	logoImage.onload = () => {
+		document.querySelectorAll(".logo").forEach((logoLink) => {
+			if (logoLink.querySelector("img")) return;
+			const image = document.createElement("img");
+			image.src = "assets/logo.png";
+			image.alt = "Lechon De Jay logo";
+			logoLink.insertAdjacentElement("afterbegin", image);
+		});
+
+		let favicon = document.querySelector('link[rel="icon"]');
+		if (!favicon) {
+			favicon = document.createElement("link");
+			favicon.rel = "icon";
+			document.head.append(favicon);
+		}
+		favicon.type = "image/png";
+		favicon.href = "assets/logo.png";
+	};
+	logoImage.src = "assets/logo.png";
+});
