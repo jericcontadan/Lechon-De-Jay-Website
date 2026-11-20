@@ -1,6 +1,6 @@
 /* =====================================================================
 	 Lechon De Jay | script.js
-	 Sections: 1 Form validation · 2 Menu category filter · 3 Cart
+	 Sections: 1 Form validation · 2 Menu category filter · 3 Cart · 4 Store status
 	 ===================================================================== */
 
 /* ===== 1. Form validation ===== */
@@ -548,4 +548,31 @@ document.addEventListener("DOMContentLoaded", () => {
 			renderCart();
 		});
 	}
+});
+
+/* ===== 4. Store status ===== */
+document.addEventListener("DOMContentLoaded", () => {
+	const status = document.getElementById("store-status");
+	if (!status) return;
+
+	function updateStoreStatus() {
+		const parts = new Intl.DateTimeFormat("en-PH", {
+			timeZone: "Asia/Manila",
+			hour: "2-digit",
+			minute: "2-digit",
+			hourCycle: "h23"
+		}).formatToParts(new Date());
+
+		const hour = Number(parts.find((part) => part.type === "hour")?.value || 0);
+		const minute = Number(parts.find((part) => part.type === "minute")?.value || 0);
+		const currentMinutes = hour * 60 + minute;
+		const isOpen = currentMinutes >= 10 * 60 && currentMinutes < 22 * 60;
+
+		status.textContent = isOpen ? "Open now" : "Closed – opens 10 AM";
+		status.classList.toggle("is-open", isOpen);
+		status.classList.toggle("is-closed", !isOpen);
+	}
+
+	updateStoreStatus();
+	window.setInterval(updateStoreStatus, 60 * 1000);
 });
