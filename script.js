@@ -1,6 +1,6 @@
 /* =====================================================================
 	 Lechon De Jay | script.js
-	 Sections: 1 Form validation · 2 Menu category filter
+	 Sections: 1 Form validation · 2 Menu category filter · 3 Cart
 	 ===================================================================== */
 
 /* ===== 1. Form validation ===== */
@@ -167,9 +167,11 @@ document.addEventListener("DOMContentLoaded", () => {
 				return;
 			}
 
-			form.reset();
-			controls.forEach(clearError);
-			showSuccessToast("Your form was submitted successfully.");
+			if (page !== "cart") {
+				form.reset();
+				controls.forEach(clearError);
+				showSuccessToast("Your form was submitted successfully.");
+			}
 		});
 	});
 });
@@ -244,4 +246,306 @@ document.addEventListener("DOMContentLoaded", () => {
 		: "All";
 
 	selectCategory(validCategory);
+});
+
+/* ===== 3. Working cart ===== */
+document.addEventListener("DOMContentLoaded", () => {
+	const storageKey = "lechonDeJayCart";
+
+	function readCart() {
+		try {
+			const stored = JSON.parse(localStorage.getItem(storageKey) || "[]");
+			return Array.isArray(stored) ? stored : [];
+		} catch (error) {
+			return [];
+		}
+	}
+
+	function saveCart(cart) {
+		try {
+			localStorage.setItem(storageKey, JSON.stringify(cart));
+			return true;
+		} catch (error) {
+			return false;
+		}
+	}
+
+	function clearCart() {
+		try {
+			localStorage.removeItem(storageKey);
+		} catch (error) {
+			// Storage may be unavailable; the cart will remain empty for this session.
+		}
+	}
+
+	function formatPesos(amount) {
+		return `₱${Number(amount).toLocaleString("en-PH")}`;
+	}
+
+	function cartCount(cart) {
+		return cart.reduce((total, item) => total + (Number(item.quantity) || 0), 0);
+	}
+
+	function updateCartBadge() {
+		const cart = readCart();
+		const count = cartCount(cart);
+		document.querySelectorAll(".site-nav a").forEach((link) => {
+			if (!/^cart\.html$/i.test(link.getAttribute("href") || "")) return;
+			const existing = link.querySelector(".cart-count");
+			if (existing) existing.remove();
+			if (count > 0) {
+				const badge = document.createElement("span");
+				badge.className = "cart-count";
+				badge.setAttribute("aria-label", `${count} item${count === 1 ? "" : "s"} in cart`);
+				badge.textContent = String(count);
+				link.append(badge);
+			}
+		});
+	}
+
+	function showToast(message, isError) {
+		let host = document.getElementById("toastHost");
+		if (!host) {
+			host = document.createElement("div");
+			host.id = "toastHost";
+			host.setAttribute("role", "status");
+			host.setAttribute("aria-live", "polite");
+			host.setAttribute("aria-atomic", "false");
+			document.body.append(host);
+		}
+		const toast = document.createElement("div");
+		toast.className = `toast${isError ? " error" : ""}`;
+		toast.textContent = message;
+		host.append(toast);
+		window.setTimeout(() => toast.remove(), 4000);
+	}
+
+	updateCartBadge();
+
+	document.querySelectorAll("[data-add-to-cart]").forEach((button) => {
+		button.addEventListener("click", () => {
+			const card = button.closest(".menu-card");
+			if (!card) return;
+			const name = card.querySelector(".name");
+			const price = card.querySelector(".price");
+			if (!name || !price) return;
+
+			const itemName = name.textContent.trim();
+			const itemPrice = Number(price.textContent.replace(/[^\d.]/g, ""));
+			if (!itemName || !Number.isFinite(itemPrice) || itemPrice <= 0) return;
+
+			const cart = readCart();
+			const existing = cart.find((item) => item.name === itemName);
+			if (existing) {
+				existing.quantity = (Number(existing.quantity) || 0) + 1;
+			} else {
+				cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+			}
+
+			if (saveCart(cart)) {
+				updateCartBadge();
+				showToast(`${itemName} added to cart.`);
+			} else {
+				showToast("Could not save the cart. Please enable browser storage.", true);
+			}
+		});
+	});
+
+	const page = document.body ? document.body.dataset.page : "";
+	if (page !== "cart") return;
+
+	const cartContents = document.getElementById("cart-contents");
+	const checkoutForm = document.querySelector("form.form-box");
+	const checkoutTotal = document.getElementById("checkout-total");
+
+	function renderCart() {
+		if (!cartContents) return;
+		const cart = readCart();
+		cartContents.replaceChildren();
+		let total = 0;
+
+		if (cart.length === 0) {
+			const empty = document.createElement("p");
+			empty.className = "empty";
+			empty.textContent = "Your cart is empty.";
+			const menuLink = document.createElement("a");
+			menuLink.className = "btn btn-outline";
+			menuLink.href = "menu.html";
+			menuLink.textContent = "Browse the menu";
+			cartContents.append(empty, menuLink);
+			if (checkoutTotal) checkoutTotal.textContent = formatPesos(0);
+			if (checkoutForm) checkoutForm.hidden = true;
+			updateCartBadge();
+			return;
+		}
+
+		const wrap = document.createElement("div");
+		wrap.className = "table-wrap";
+		const table = document.createElement("table");
+		table.className = "data";
+
+		const thead = document.createElement("thead");
+		const headerRow = document.createElement("tr");
+		["Item", "Quantity", "Price", "Subtotal", ""].forEach((text) => {
+			const th = document.createElement("th");
+			th.textContent = text;
+			headerRow.append(th);
+		});
+		thead.append(headerRow);
+		table.append(thead);
+
+		const tbody = document.createElement("tbody");
+		cart.forEach((item, index) => {
+			const quantity = Math.max(1, Number(item.quantity) || 1);
+			const price = Number(item.price) || 0;
+			const subtotal = quantity * price;
+			total += subtotal;
+			const row = document.createElement("tr");
+
+			const nameCell = document.createElement("td");
+			nameCell.textContent = item.name;
+			const quantityCell = document.createElement("td");
+			quantityCell.className = "cart-quantity";
+
+			const minus = document.createElement("button");
+			minus.type = "button";
+			minus.className = "btn btn-outline btn-sm";
+			minus.textContent = "−";
+			minus.setAttribute("aria-label", `Decrease quantity of ${item.name}`);
+			minus.addEventListener("click", () => changeQuantity(index, -1));
+
+			const quantityText = document.createElement("span");
+			quantityText.className = "cart-quantity-value";
+			quantityText.textContent = String(quantity);
+
+			const plus = document.createElement("button");
+			plus.type = "button";
+			plus.className = "btn btn-outline btn-sm";
+			plus.textContent = "+";
+			plus.setAttribute("aria-label", `Increase quantity of ${item.name}`);
+			plus.addEventListener("click", () => changeQuantity(index, 1));
+
+			quantityCell.append(minus, quantityText, plus);
+
+			const priceCell = document.createElement("td");
+			priceCell.textContent = formatPesos(price);
+			const subtotalCell = document.createElement("td");
+			subtotalCell.textContent = formatPesos(subtotal);
+			const removeCell = document.createElement("td");
+			const remove = document.createElement("button");
+			remove.type = "button";
+			remove.className = "btn btn-outline btn-sm";
+			remove.textContent = "Remove";
+			remove.setAttribute("aria-label", `Remove ${item.name} from cart`);
+			remove.addEventListener("click", () => removeItem(index));
+			removeCell.append(remove);
+
+			row.append(nameCell, quantityCell, priceCell, subtotalCell, removeCell);
+			tbody.append(row);
+		});
+		table.append(tbody);
+
+		const tfoot = document.createElement("tfoot");
+		const totalRow = document.createElement("tr");
+		const totalLabel = document.createElement("th");
+		totalLabel.colSpan = 3;
+		totalLabel.textContent = "Total";
+		const totalValue = document.createElement("th");
+		totalValue.textContent = formatPesos(total);
+		totalRow.append(totalLabel, totalValue);
+		tfoot.append(totalRow);
+		table.append(tfoot);
+		wrap.append(table);
+		cartContents.append(wrap);
+
+		if (checkoutForm) checkoutForm.hidden = false;
+		if (checkoutTotal) checkoutTotal.textContent = formatPesos(total);
+		updateCartBadge();
+	}
+
+	function changeQuantity(index, delta) {
+		const cart = readCart();
+		if (!cart[index]) return;
+		cart[index].quantity = (Number(cart[index].quantity) || 1) + delta;
+		if (cart[index].quantity <= 0) cart.splice(index, 1);
+		saveCart(cart);
+		renderCart();
+	}
+
+	function removeItem(index) {
+		const cart = readCart();
+		cart.splice(index, 1);
+		saveCart(cart);
+		renderCart();
+	}
+
+	function showConfirmationModal(cart, total) {
+		const overlay = document.createElement("div");
+		overlay.className = "modal-overlay";
+		overlay.setAttribute("role", "presentation");
+		const modal = document.createElement("div");
+		modal.className = "modal";
+		modal.setAttribute("role", "dialog");
+		modal.setAttribute("aria-modal", "true");
+		modal.setAttribute("aria-labelledby", "order-confirmation-title");
+
+		const title = document.createElement("h2");
+		title.id = "order-confirmation-title";
+		title.textContent = "Order confirmed";
+		const summary = document.createElement("div");
+		summary.className = "receipt";
+
+		const table = document.createElement("table");
+		cart.forEach((item) => {
+			const row = document.createElement("tr");
+			const itemCell = document.createElement("td");
+			itemCell.textContent = `${item.name} × ${item.quantity}`;
+			const priceCell = document.createElement("td");
+			priceCell.textContent = formatPesos(item.price * item.quantity);
+			row.append(itemCell, priceCell);
+			table.append(row);
+		});
+		summary.append(table);
+
+		const amount = document.createElement("p");
+		amount.className = "amount";
+		amount.textContent = formatPesos(total);
+		const actions = document.createElement("div");
+		actions.className = "modal-actions";
+		const close = document.createElement("button");
+		close.type = "button";
+		close.className = "btn btn-primary";
+		close.textContent = "Done";
+		close.addEventListener("click", () => overlay.remove());
+		actions.append(close);
+		modal.append(title, summary, amount, actions);
+		overlay.append(modal);
+		document.body.append(overlay);
+		close.focus();
+	}
+
+	renderCart();
+
+	if (checkoutForm) {
+		checkoutForm.addEventListener("submit", (event) => {
+			event.preventDefault();
+			const cart = readCart();
+			if (cart.length === 0) {
+				showToast("Your cart is empty.", true);
+				return;
+			}
+
+			const invalid = checkoutForm.querySelector(".invalid");
+			if (invalid) {
+				invalid.focus();
+				return;
+			}
+
+			const total = cart.reduce((sum, item) => sum + (Number(item.price) || 0) * (Number(item.quantity) || 0), 0);
+			showConfirmationModal(cart, total);
+			clearCart();
+			if (checkoutForm) checkoutForm.reset();
+			renderCart();
+		});
+	}
 });

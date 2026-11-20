@@ -192,6 +192,9 @@ table.data td { padding: 8px 10px; border-top: 1px solid var(--photo); vertical-
 table.data input, table.data select { min-width: 90px; min-height: 36px; padding: 4px 6px; }
 table.data td .small { font-size: .8rem; color: #5a4a42; }
 .empty { padding: var(--s2); font-style: italic; }
+.cart-count { display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; margin-left: 6px; border-radius: 999px; background: var(--gold); color: var(--brown); font-size: .75rem; line-height: 1; }
+.cart-quantity { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.cart-quantity-value { min-width: 24px; text-align: center; font-weight: 700; }
 
 /* ===== 11. Orders, status, progress ===== */
 .record-card { background: #fff; border: 3px solid var(--brown); border-radius: 12px; padding: var(--s2); margin-bottom: var(--s2); }

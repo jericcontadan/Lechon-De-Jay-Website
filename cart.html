@@ -21,7 +21,7 @@
   <main id="main" class="container">
     <h1 class="page-title">Your Cart</h1>
     <p class="note">Prototype page. Ordering is planned for Phase 2.</p>
-    <div class="table-wrap"><table class="data"><thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Subtotal</th></tr></thead><tbody><tr><td>₱99 Budget Meal</td><td>2</td><td>₱99</td><td>₱198</td></tr><tr><td>Lechon Paksiw</td><td>1</td><td>₱149</td><td>₱149</td></tr></tbody><tfoot><tr><th colspan="3">Sample total</th><th>₱347</th></tr></tfoot></table></div>
+    <div id="cart-contents"></div>
     <form class="form-box" action="#" method="post">
       <h2>Checkout</h2>
       <fieldset>
@@ -40,7 +40,7 @@
         <label class="check"><input type="radio" name="pay" value="Maya"> Maya (online)</label>
         <label class="check"><input type="radio" name="pay" value="Pay at pickup"> Pay at pickup (cash or e-wallet)</label>
       </fieldset>
-      <p class="total-line">Sample total: <strong>₱347</strong></p>
+      <p class="total-line">Total: <strong id="checkout-total">₱0</strong></p>
       <p class="privacy">Prototype page. Checkout and payment are planned for Phase 2.</p>
       <button class="btn btn-primary" type="submit">Place Order</button>
     </form>
