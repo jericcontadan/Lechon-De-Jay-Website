@@ -1,6 +1,6 @@
 /* =====================================================================
 	 Lechon De Jay | script.js
-	 Sections: 1 Form validation
+	 Sections: 1 Form validation · 2 Menu category filter
 	 ===================================================================== */
 
 /* ===== 1. Form validation ===== */
@@ -172,4 +172,76 @@ document.addEventListener("DOMContentLoaded", () => {
 			showSuccessToast("Your form was submitted successfully.");
 		});
 	});
+});
+
+/* ===== 2. Menu category filter ===== */
+document.addEventListener("DOMContentLoaded", () => {
+	const page = document.body ? document.body.dataset.page : "";
+	if (page !== "menu") return;
+
+	const filterButtons = Array.from(document.querySelectorAll(".menu-filter [data-category]"));
+	const searchInput = document.getElementById("menu-search");
+	const status = document.getElementById("menu-filter-status");
+	const sections = Array.from(document.querySelectorAll("main section[aria-labelledby]"));
+
+	if (filterButtons.length === 0 || sections.length === 0) return;
+
+	let activeCategory = "All";
+
+	function applyFilter() {
+		const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
+		let visibleCount = 0;
+
+		sections.forEach((section) => {
+			const heading = section.querySelector(".section-title");
+			if (!heading) return;
+
+			const categoryMatch = activeCategory === "All" || heading.textContent.trim() === activeCategory;
+			const cards = Array.from(section.querySelectorAll(".menu-card"));
+			let sectionVisibleCount = 0;
+
+			cards.forEach((card) => {
+				const name = card.querySelector(".name");
+				const nameMatch = !query || (name && name.textContent.toLowerCase().includes(query));
+				const visible = categoryMatch && nameMatch;
+				card.hidden = !visible;
+				if (visible) sectionVisibleCount += 1;
+			});
+
+			section.hidden = sectionVisibleCount === 0;
+			visibleCount += sectionVisibleCount;
+		});
+
+		if (status) {
+			if (visibleCount === 0) {
+				status.textContent = "No menu items match this filter.";
+			} else {
+				status.textContent = `${visibleCount} menu item${visibleCount === 1 ? "" : "s"} shown.`;
+			}
+		}
+	}
+
+	function selectCategory(category) {
+		activeCategory = category;
+		filterButtons.forEach((button) => {
+			const selected = button.dataset.category === category;
+			button.setAttribute("aria-pressed", String(selected));
+		});
+		applyFilter();
+	}
+
+	filterButtons.forEach((button) => {
+		button.addEventListener("click", () => selectCategory(button.dataset.category || "All"));
+	});
+
+	if (searchInput) {
+		searchInput.addEventListener("input", applyFilter);
+	}
+
+	const urlCategory = new URLSearchParams(window.location.search).get("cat");
+	const validCategory = filterButtons.some((button) => button.dataset.category === urlCategory)
+		? urlCategory
+		: "All";
+
+	selectCategory(validCategory);
 });

@@ -27,6 +27,20 @@
   <main id="main" class="container">
     <h1 class="page-title">Our Menu</h1>
     <p class="note">Menu items and prices are shown below. Ordering is planned for Phase 2.</p>
+    <div class="menu-filter" aria-label="Menu filters">
+      <div class="tabs" role="group" aria-label="Filter menu by category">
+        <button class="tab" type="button" data-category="All" aria-pressed="true">All</button>
+        <button class="tab" type="button" data-category="Whole Lechon" aria-pressed="false">Whole Lechon</button>
+        <button class="tab" type="button" data-category="Meals" aria-pressed="false">Meals</button>
+        <button class="tab" type="button" data-category="Snacks &amp; Sides" aria-pressed="false">Snacks &amp; Sides</button>
+        <button class="tab" type="button" data-category="Desserts &amp; Drinks" aria-pressed="false">Desserts &amp; Drinks</button>
+        <button class="tab" type="button" data-category="Add-ons" aria-pressed="false">Add-ons</button>
+      </div>
+      <label for="menu-search">Search menu
+        <input id="menu-search" type="search" placeholder="Search by item name">
+      </label>
+    </div>
+    <p id="menu-filter-status" class="note" aria-live="polite"></p>
     <section aria-labelledby="whole-h">
       <h2 id="whole-h" class="section-title">Whole Lechon</h2>
       <div class="menu-grid">
