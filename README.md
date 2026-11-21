@@ -10,11 +10,11 @@ This project presents the store's menu, services, reservation and event-booking 
 
 | Member | Role |
 | --- | --- |
-| Salcedo, Tristan Anjelo A. | To be confirmed |
-| Contadan, Jeric | To be confirmed |
-| Olvina, Drew Carlos R. | To be confirmed |
-| Pascual, Meg-Ryan O. | To be confirmed |
-| Panis, Jayson | To be confirmed |
+| Salcedo, Tristan Anjelo A. | Project Manager |
+| Contadan, Jeric G. | Database / Back-End |
+| Olvina, Drew Carlos R. | Front-End Developer |
+| Pascual, Meg-Ryan O. | UI/UX Designer |
+| Panis, Jayson T. | Content Writer |
 
 Submitted to: Doc. Mary Joy Viñas
 
